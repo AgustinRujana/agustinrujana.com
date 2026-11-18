@@ -1,0 +1,14 @@
+name = "agustinrujana-proxy"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+workers_dev = false
+
+# The Worker owns these hostnames: Cloudflare creates their DNS records and HTTPS certificates.
+routes = [
+  { pattern = "agustinrujana.com", custom_domain = true },
+  { pattern = "www.agustinrujana.com", custom_domain = true },
+]
+
+[vars]
+PUBLIC_HOST = "agustinrujana.com"
+ORIGIN = "https://portfolio-web-jc5svahcpa-oc.a.run.app"
