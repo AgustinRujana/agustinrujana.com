@@ -46,4 +46,26 @@ src/
 
 ## Deploying
 
-`npm run build` produces a static `out/` folder that any static host can serve: Vercel, Netlify, Cloudflare Pages, GitHub Pages or S3. Point the `agustinrujana.com` DNS at the host and use `out/` as the publish directory (on Vercel no setting is needed).
+Cloud Run behind a Cloudflare Worker, no Google load balancer:
+
+```
+agustinrujana.com (registered at Squarespace, nameservers → Cloudflare)
+  → Cloudflare Worker `agustinrujana-proxy` (deploy/cloudflare/; www → bare domain)
+    → Cloud Run `portfolio-web` (GCP project agustinrujana-com, europe-west8)
+      → nginx serving the static `out/` export (Dockerfile, deploy/nginx/default.conf)
+```
+
+Release a new version (build → push → deploy):
+
+```bash
+gcloud builds submit --config cloudbuild.yaml --project agustinrujana-com
+```
+
+The Cloud Run URL (https://portfolio-web-jc5svahcpa-oc.a.run.app) stays the same across deploys, so the Worker
+only needs redeploying when `deploy/cloudflare/` changes:
+
+```bash
+cd deploy/cloudflare && npx wrangler login && npx wrangler deploy
+```
+
+The service scales to zero (`--min-instances=0`); nginx starts in well under a second, so it costs ~nothing.
