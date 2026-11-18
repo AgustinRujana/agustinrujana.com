@@ -37,7 +37,7 @@ export const nav = [
 export const about = {
   /** Words wrapped in [brackets] are highlighted. */
   lead: "I make large apps [faster], [sturdier] and [easier to build on]. Today that means two IDEs at Arduino, a Qualcomm company: a browser editor used by 9K+ people a day, and a desktop app shipped with 270K+ devices.",
-  facts: ["Turin, Italy", "EU citizen · eligible to work in Switzerland", "Spanish · English · Italian"],
+  facts: ["Turin, Italy", "EU citizen", "Spanish · English · Italian"],
 };
 
 export type Project = {
@@ -63,9 +63,9 @@ export const projects: Project[] = [
     tag: { label: "Performance", accent: "tomato" },
     goal: "Make the desktop IDE for the UNO Q lighter to download and install.",
     approach:
-      "Restructured the module graph so the bundler could tree-shake unused code. I also built over-the-air compile and upload with the firmware and backend teams.",
-    result: "17% smaller: ~240 MB → ~200 MB",
-    stack: ["Arduino", "Wails", "Go", "TypeScript"],
+      "Trimmed the bundled language servers: removed files the app never loads and stripped debug information from native binaries.",
+    result: "103 MB less on disk: 439 → 336 MB (−23%)",
+    stack: ["Arduino", "Build pipeline", "Wails", "Go"],
   },
   {
     name: "Farmacia Central",
@@ -96,7 +96,7 @@ export const experience: Job[] = [
     place: "Turin, Italy",
     points: [
       "Maintain the **Arduino Cloud Editor**, a browser IDE used by 9K+ people a day.",
-      "Developer on **Arduino App Lab**, the IDE for the UNO Q (270K+ boards in year one). Cut the bundle by 17%.",
+      "Developer on **Arduino App Lab**, the IDE for the UNO Q (270K+ boards in year one). Cut its install size by 103 MB (−23%).",
       "Built **over-the-air compile and upload** with the firmware and backend teams.",
       "Wrote **LLM evaluation** suites in Promptfoo for the Arduino AI Assistant.",
     ],
@@ -147,8 +147,11 @@ export const contact = {
   text: "I'm looking for frontend, developer-platform and AI-tooling roles. The fastest way to reach me is email.",
 };
 
-/** Stickers in the hero playground: label, base radius in px, colour. */
-export const stickers: { label: string; size: number; accent: Accent }[] = [
+/**
+ * Stickers in the hero playground: label, base radius in px, colour.
+ * `spoken` replaces a short label in the canvas description read by screen readers.
+ */
+export const stickers: { label: string; spoken?: string; size: number; accent: Accent }[] = [
   { label: "Performance", size: 66, accent: "tomato" },
   { label: "Reliability", size: 60, accent: "tomato" },
   { label: "Platforms", size: 58, accent: "tomato" },
@@ -163,11 +166,11 @@ export const stickers: { label: string; size: number; accent: Accent }[] = [
   { label: "Tailwind", size: 40, accent: "white" },
   { label: "SQL", size: 34, accent: "blue" },
   { label: "Docker", size: 40, accent: "blue" },
-  { label: "GCP", size: 36, accent: "blue" },
+  { label: "GCP", spoken: "Google Cloud", size: 36, accent: "blue" },
   { label: "AWS", size: 36, accent: "blue" },
   { label: "LLMs", size: 46, accent: "mint" },
   { label: "RAG", size: 38, accent: "mint" },
   { label: "MCP", size: 38, accent: "mint" },
   { label: "Promptfoo", size: 48, accent: "mint" },
-  { label: "ES · EN · IT", size: 50, accent: "ink" },
+  { label: "ES · EN · IT", spoken: "and Spanish, English, Italian", size: 50, accent: "ink" },
 ];

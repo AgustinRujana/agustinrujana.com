@@ -125,7 +125,9 @@ export function StickerPlayground() {
       wake();
     };
 
+    // The Shake button dispatches this synchronously inside its click, so iOS still counts it as a tap.
     const onShake = (e: Event) => {
+      startMotion();
       kick(bodies, (e as CustomEvent<number | undefined>).detail ?? 1);
       wake();
     };
@@ -161,7 +163,10 @@ export function StickerPlayground() {
       if (typeof ask === "function") {
         ask.call(DeviceMotionEvent)
           .then((state) => state === "granted" && window.addEventListener("devicemotion", onMotion))
-          .catch(() => {});
+          // Rejected (e.g. not counted as a tap): allow the next tap or Shake press to ask again.
+          .catch(() => {
+            motionStarted = false;
+          });
       } else {
         window.addEventListener("devicemotion", onMotion);
       }
@@ -177,7 +182,7 @@ export function StickerPlayground() {
     canvas.addEventListener("pointerup", onUp);
     canvas.addEventListener("pointercancel", onUp);
     window.addEventListener(SHAKE_EVENT, onShake);
-    window.addEventListener("pointerdown", onFirstTap, { once: true });
+    window.addEventListener("pointerdown", onFirstTap);
 
     const resize = new ResizeObserver(layout);
     resize.observe(canvas);
@@ -207,7 +212,7 @@ export function StickerPlayground() {
     <canvas
       ref={canvasRef}
       role="img"
-      aria-label={`Skill stickers you can drag and throw: ${stickers.map((s) => s.label).join(", ")}. The same skills are listed as text below.`}
+      aria-label={`Skill stickers you can drag and throw: ${stickers.map((s) => s.spoken ?? s.label).join(", ")}. The same skills are listed as text below.`}
       className="absolute inset-0 block h-full w-full cursor-grab touch-none pointer-coarse:w-[calc(100%-44px)]"
     />
   );
