@@ -4,8 +4,9 @@ import { ExternalLink } from "@/components/ui/ExternalLink";
 import { contact, site } from "@/content/site";
 import { cn } from "@/lib/cn";
 
+const linkClass = "flex items-center justify-between gap-3 rounded-xl border-2 px-4 py-3 font-bold";
+
 const links = [
-  { label: "Résumé", href: site.resumeUrl, primary: true },
   { label: "GitHub", href: site.social.github },
   { label: "LinkedIn", href: site.social.linkedin },
   { label: "Source code", href: site.social.repo },
@@ -26,16 +27,14 @@ export function Contact() {
             <p className="max-w-[42ch]">{contact.text}</p>
           </div>
           <div className="grid gap-2.5">
+            <a href={site.resumeUrl} download className={cn(linkClass, "border-tomato bg-tomato text-paper")}>
+              Résumé (PDF) <span aria-hidden="true">↓</span>
+            </a>
             {links.map((link) => (
               <ExternalLink
                 key={link.label}
                 href={link.href}
-                className={cn(
-                  "flex items-center justify-between gap-3 rounded-xl border-2 px-4 py-3 font-bold",
-                  link.primary
-                    ? "border-tomato bg-tomato text-paper"
-                    : "border-paper hover:bg-paper hover:text-ink",
-                )}
+                className={cn(linkClass, "border-paper hover:bg-paper hover:text-ink")}
               >
                 {link.label} <span aria-hidden="true">↗</span>
               </ExternalLink>

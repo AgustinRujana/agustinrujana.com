@@ -18,7 +18,8 @@ export const site = {
     "Frontend engineer in Turin building fast, reliable software people enjoy: performance, developer platforms and AI tooling. Currently at Arduino, a Qualcomm company.",
   headline: ["Building software", "people enjoy."],
   intro: "Frontend engineer for performance, developer platforms and AI tooling. Turin, Italy.",
-  resumeUrl: "https://claude.ai/artifact/4aZaf1QF8LwwFYk2XYdzbq",
+  /** Served from public/; links to it download the file. */
+  resumeUrl: "/Agustin-R-Basilico-CV.pdf",
   social: {
     github: "https://github.com/agustinrujana",
     linkedin: "https://www.linkedin.com/in/agustinrujana",

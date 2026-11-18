@@ -1,7 +1,7 @@
 // Cloudflare Worker in front of Cloud Run: serves agustinrujana.com without a Google load balancer.
 // Every request is forwarded to the Cloud Run service; www redirects to the bare domain.
 // Deploy: cd deploy/cloudflare && npx wrangler deploy
-export default {
+const worker = {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.hostname === `www.${env.PUBLIC_HOST}`) {
@@ -15,3 +15,5 @@ export default {
     return fetch(target, { method: request.method, headers, body: request.body, redirect: "manual" });
   },
 };
+
+export default worker;

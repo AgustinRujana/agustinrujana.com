@@ -1,5 +1,4 @@
 import { Container } from "@/components/ui/Container";
-import { ExternalLink } from "@/components/ui/ExternalLink";
 import { nav, site } from "@/content/site";
 
 export function Header() {
@@ -14,12 +13,14 @@ export function Header() {
             {item.label}
           </a>
         ))}
-        <ExternalLink
+        <a
           href={site.resumeUrl}
+          download
           className="rounded-[10px] border-2 border-ink bg-paper px-3 py-1.5 shadow-hard-sm"
         >
-          Résumé ↗
-        </ExternalLink>
+          Résumé <span aria-hidden="true">↓</span>
+          <span className="sr-only"> (PDF download)</span>
+        </a>
       </nav>
     </Container>
   );
