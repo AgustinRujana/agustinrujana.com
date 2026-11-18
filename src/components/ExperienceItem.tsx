@@ -4,7 +4,7 @@ import { richText } from "@/lib/rich-text";
 
 export function ExperienceItem({ job }: { job: Job }) {
   return (
-    <li className="grid gap-x-7 gap-y-1 border-b border-ink/18 py-5 min-[700px]:grid-cols-[200px_1fr]">
+    <li className="grid gap-x-7 gap-y-1 border-b border-ink/18 py-5 last:border-b-0 last:pb-0 min-[700px]:grid-cols-[200px_1fr]">
       <p className="pt-0.5 text-sm text-dim tabular-nums">
         <time dateTime={job.start}>{formatMonth(job.start)}</time> –{" "}
         {job.end ? <time dateTime={job.end}>{formatMonth(job.end)}</time> : "Present"}
