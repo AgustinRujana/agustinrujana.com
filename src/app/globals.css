@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* Design tokens. Tailwind v4 turns these into utilities: bg-sun, text-ink, shadow-hard, font-display… */
+@theme {
+  --color-sun: #ffe14d;
+  --color-ink: #17130f;
+  --color-paper: #ffffff;
+  --color-dim: #5c5548;
+  --color-tomato: #ff5532;
+  --color-blue: #3d6bff;
+  --color-mint: #7fe0bf;
+
+  --font-display: var(--font-unbounded), "Arial Black", sans-serif;
+  --font-sans: var(--font-dm-sans), "Segoe UI", Arial, sans-serif;
+
+  --shadow-hard-sm: 3px 3px 0 var(--color-ink);
+  --shadow-hard: 6px 6px 0 var(--color-ink);
+  --shadow-hard-lg: 9px 9px 0 var(--color-ink);
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper font-sans text-base leading-relaxed text-ink antialiased;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-blue);
+    outline-offset: 3px;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
