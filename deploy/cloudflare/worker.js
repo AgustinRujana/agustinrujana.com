@@ -1,10 +1,11 @@
 // Cloudflare Worker in front of Cloud Run: serves agustinrujana.com without a Google load balancer.
-// Every request is forwarded to the Cloud Run service; www redirects to the bare domain.
+// Every request is forwarded to the Cloud Run service; http and www redirect to https://<bare domain>.
 // Deploy: cd deploy/cloudflare && npx wrangler deploy
 const worker = {
   async fetch(request, env) {
     const url = new URL(request.url);
-    if (url.hostname === `www.${env.PUBLIC_HOST}`) {
+    if (url.protocol === "http:" || url.hostname === `www.${env.PUBLIC_HOST}`) {
+      url.protocol = "https:";
       url.hostname = env.PUBLIC_HOST;
       return Response.redirect(url.toString(), 301);
     }
