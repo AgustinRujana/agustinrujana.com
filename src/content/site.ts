@@ -20,6 +20,8 @@ export const site = {
   intro: "Senior frontend engineer for performance, developer platforms and AI tooling. Turin, Italy.",
   /** Served from public/; links to it download the file. */
   resumeUrl: "/Agustin-R-Basilico-CV.pdf",
+  /** Cloudflare Web Analytics site token (public). Leave empty to disable the beacon. */
+  analyticsToken: "b7af21d5fed24a6faac4e21eeb612511",
   social: {
     github: "https://github.com/agustinrujana",
     linkedin: "https://www.linkedin.com/in/agustinrujana",
