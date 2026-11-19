@@ -9,15 +9,15 @@ export const site = {
   url: "https://agustinrujana.com",
   name: "Agustin R. Basilico",
   shortName: "agustin.",
-  role: "Frontend engineer",
+  role: "Senior frontend engineer",
   locale: "en_US",
   location: "Turin, Italy",
   email: "agustinrujanacontact@gmail.com",
-  title: "Agustin R. Basilico · Frontend engineer",
+  title: "Agustin R. Basilico · Senior frontend engineer",
   description:
-    "Frontend engineer in Turin building fast, reliable software people enjoy: performance, developer platforms and AI tooling. Currently at Arduino, a Qualcomm company.",
+    "Senior frontend engineer in Turin building fast, reliable software people enjoy: performance, developer platforms and AI tooling. Currently at Arduino, a Qualcomm company.",
   headline: ["Building software", "people enjoy."],
-  intro: "Frontend engineer for performance, developer platforms and AI tooling. Turin, Italy.",
+  intro: "Senior frontend engineer for performance, developer platforms and AI tooling. Turin, Italy.",
   /** Served from public/; links to it download the file. */
   resumeUrl: "/Agustin-R-Basilico-CV.pdf",
   social: {

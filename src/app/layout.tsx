@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   applicationName: site.name,
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
-  keywords: ["Frontend engineer", "React", "Next.js", "TypeScript", "Web performance", "Developer tools", "Turin", "Arduino"],
+  keywords: ["Senior frontend engineer", "Frontend engineer", "React", "Next.js", "TypeScript", "Web performance", "Developer tools", "Turin", "Arduino"],
   alternates: { canonical: "/" },
   openGraph: {
     type: "profile",
