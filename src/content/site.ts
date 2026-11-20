@@ -76,6 +76,16 @@ export const projects: Project[] = [
     stack: ["Arduino", "Build pipeline", "Wails", "Go"],
   },
   {
+    name: "Affitalo",
+    tag: { label: "Founder", accent: "mint" },
+    goal: "Let neighbours rent everyday things from each other instead of buying them, starting in Italy.",
+    approach:
+      "Founded it and built the product end to end: a Next.js site and a Fastify API on Postgres, with identity checks for lenders and Stripe payments released 48 hours after the item comes back.",
+    result: "Live at affitalo.it, founder-built",
+    stack: ["Founder", "Next.js", "Fastify", "Stripe"],
+    link: { label: "affitalo.it", href: "https://affitalo.it/" },
+  },
+  {
     name: "Farmacia Central",
     tag: { label: "Ownership", accent: "ink" },
     goal: "Take my family's pharmacy in Argentina online, with a complete store for payments and orders.",
