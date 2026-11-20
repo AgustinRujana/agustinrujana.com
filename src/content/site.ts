@@ -49,6 +49,8 @@ export type Project = {
   approach: string;
   result: string;
   stack: string[];
+  /** Optional link shown in the card's bottom-right corner. */
+  link?: { label: string; href: string };
 };
 
 export const projects: Project[] = [
@@ -59,6 +61,10 @@ export const projects: Project[] = [
     approach: "Led performance and memory optimizations across the editor.",
     result: "A smoother editor for 9K+ daily users",
     stack: ["Arduino", "Frontend performance"],
+    link: {
+      label: "Arduino blog",
+      href: "https://blog.arduino.cc/2026/10/08/one-year-of-uno-q-built-together-open-by-design/",
+    },
   },
   {
     name: "Arduino App Lab",
@@ -77,6 +83,7 @@ export const projects: Project[] = [
       "Designed, built and run it on my own: card payments, orders and invoicing, catalog import from spreadsheets, email and staff push notifications.",
     result: "Live in production, built solo",
     stack: ["Freelance", "Next.js", "Google Cloud Run"],
+    link: { label: "farcentral.com", href: "https://farcentral.com/" },
   },
 ];
 
@@ -146,7 +153,7 @@ export const education = "B.Sc. in Management, University of Turin (103/110).";
 
 export const contact = {
   title: "Let's talk",
-  text: "I'm looking for frontend, developer-platform and AI-tooling roles. The fastest way to reach me is email.",
+  text: "Always happy to talk about frontend, developer platforms and AI tooling. The fastest way to reach me is email.",
 };
 
 /**
